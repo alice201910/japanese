@@ -41,11 +41,6 @@ public class DownloadController extends HttpServlet {
 		System.out.println("go 컨트롤러 수정");
 		System.out.println("go 컨트롤러 수정");
 		System.out.println("go 컨트롤러 수정");
-		System.out.println("go 컨트롤러 수정");
-		System.out.println("go 컨트롤러 수정");
-		System.out.println("go 컨트롤러 수정");
-		System.out.println("go 컨트롤러 수정");
-		System.out.println("go 컨트롤러 수정");
 
 		String fname = request.getParameter("fname");
 		System.out.println("fname: " + fname);
