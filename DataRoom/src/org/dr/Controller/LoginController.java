@@ -80,7 +80,7 @@ public class LoginController extends HttpServlet {
 		System.out.println("헐 마상 ~~~~");
 		System.out.println("ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ");
 		System.out.println("ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ");
-		System.out.println("괜찮아 평생 혼자 살면되용~~~");
+		System.out.println("괜찮아 평생 혼자   살면되용~~~");
 
 	}
 
