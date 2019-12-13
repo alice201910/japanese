@@ -104,4 +104,13 @@ public class ReadController extends HttpServlet {
 		
 		return result.isPresent();
 	}
-}
+
+	public void gotohome(){
+		for(int i = 0; i<5;i++){
+			System.out.println("What you gonna do?");
+			System.out.println("What you gonna do?");
+			System.out.println("What you gonna do?");
+			System.out.println("What you gonna do?");
+			System.out.println("What you gonna do?");
+		}
+	}

@@ -73,7 +73,14 @@ public class LoginController extends HttpServlet {
     	
     	session.setAttribute("result", result);
 
-    	response.sendRedirect("/board/list");
+		response.sendRedirect("/board/list");
+		
+		System.out.println("난 언제 연애 할까요 >>>??");
+		System.out.println("평생 못해요 ~~~~`");
+		System.out.println("헐 마상 ~~~~");
+		System.out.println("ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ");
+		System.out.println("ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ");
+		System.out.println("괜찮아 평생 혼자   살면되용~~~");
 
 	}
 
