@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dr.dao.BoardMapper">
+  <insert id="insert">
+    insert into tbl_board (bno, title, content, writer, hashtag)
+values(seq_board.nextval, #{title}, #{content}, #{writer}, #{hashtag})
+  </insert>
+  <insert id="fileInsert">
+  	insert into tbl_board_attach(board_no, fname) 
+values(SEQ_BOARD.currval,#{fname})
+  </insert>
+  
+<insert id="fileInsert2">
+
+  	insert into tbl_board_attach(board_no, fname) 
+	values(#{bno},#{fname})
+</insert>
+  <select id="selectList" resultType="org.dr.domain.BoardVO">
+<![CDATA[
+select * from 
+( select rownum rn, bno, title, content, writer, regdate, updatedate, viewcnt, filecnt, hashtag 
+from ( select bno,title,content,writer,regdate,updatedate,viewcnt, filecnt, hashtag 
+from tbl_board board left outer join ( select board_no, count(board_no) filecnt 
+from tbl_board_attach group by board_no ) attach on board.bno = attach.board_no order by bno desc ) 
+where rownum <= (#{page} * #{amount}) ) where rn > (#{page} -1) * #{amount}
+]]>
+</select>
+<select id="getCount" resultType="int">
+select count(bno) from tbl_board 
+</select>
+<select id="selectOne" resultMap="selectOneResult">
+	select * from tbl_board board left outer join tbl_board_attach attach
+on board.bno = attach.board_no where bno = #{bno}
+</select>
+<resultMap type="org.dr.domain.BoardVO" id="selectOneResult">
+	<id property="bno" column="bno"/>
+	<result property="title" column="title"/>
+	<result property="content" column="content"/>
+	<result property="writer" column="writer"/>
+	<result property="hashtag" column="hashtag"/>
+	<collection property="fnames" ofType="string">
+		<result column="fname"/>
+	</collection>
+</resultMap>
+<delete id="deleteFile">
+	delete from tbl_board_attach where fname=#{fname}
+</delete>
+<update id="update">
+	update tbl_board set title = #{title}, content=#{content} 
+where bno = #{bno}
+</update>
+<delete id="delete"> delete from tbl_board where bno = #{bno} </delete>
+
+<select id="search" resultType="org.dr.domain.BoardVO">
+<![CDATA[
+select * from 
+( select rownum rn, bno, title, content, writer, regdate, updatedate, viewcnt, filecnt, hashtag 
+from ( select bno,title,content,writer,regdate,updatedate,viewcnt, filecnt, hashtag 
+from tbl_board board left outer join ( select board_no, count(board_no) filecnt 
+from tbl_board_attach group by board_no ) attach 
+
+on board.bno = attach.board_no 
+where
+]]>
+  <choose>
+    <when test="type != null and type.equals('title')">
+      title LIKE '%' || #{keyword} || '%'
+    </when>
+    <when test="type != null and type.equals('writer')">
+      writer LIKE '%' || #{keyword} || '%'
+    </when>
+    <when test="type != null and type.equals('hashtag')">
+      hashtag LIKE '%' || #{keyword} || '%'
+    </when>
+  </choose>
+   <![CDATA[
+order by bno desc 
+
+)
+
+where rownum <= (#{paging.page} * #{paging.amount}) ) where rn > (#{paging.page} -1) * #{paging.amount}
+]]>
+
+</select>
+<select id="getSearchCount" resultType="int">
+select count(bno) from tbl_board
+where
+  <choose>
+    <when test="type != null and type.equals('title')">
+      title LIKE '%' || #{keyword} || '%'
+    </when>
+    <when test="type != null and type.equals('writer')">
+      writer LIKE '%' || #{keyword} || '%'
+    </when>
+    <when test="type != null and type.equals('hashtag')">
+      hashtag LIKE '%' || #{keyword} || '%'
+    </when>
+  </choose>
+</select>
+<update id="updateView">
+update tbl_board set viewcnt = viewcnt + 1 where bno = #{bno}
+</update>
+</mapper>
