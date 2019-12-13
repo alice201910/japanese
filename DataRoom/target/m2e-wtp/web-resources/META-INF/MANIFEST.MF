@@ -1,9 +1,13 @@
 Manifest-Version: 1.0
 <<<<<<< HEAD
+Built-By: pje
+=======
+<<<<<<< HEAD
 Built-By: dltdl
 =======
 Built-By: pje
 >>>>>>> yankee
+>>>>>>> d5b717e4788d90b423b2d2d73355af9baa9960cb
 Build-Jdk: 1.8.0_231
 Created-By: Maven Integration for Eclipse
 
