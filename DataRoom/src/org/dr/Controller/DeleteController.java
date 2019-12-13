@@ -1,6 +1,7 @@
 package org.dr.Controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +24,8 @@ public class DeleteController extends HttpServlet {
 	
 	public DeleteController() {
 		dao = new BoardDAOImpl();
+		
+		System.out.println("영잘알 김승원~");
     }
 
 	/**
@@ -45,5 +48,6 @@ public class DeleteController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
+
 
 }
