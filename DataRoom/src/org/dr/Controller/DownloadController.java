@@ -34,15 +34,25 @@ public class DownloadController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("go 컨트롤러 수정");
+		System.out.println("go 컨트롤러 수정");
+		System.out.println("go 컨트롤러 수정");
+		System.out.println("go 컨트롤러 수정");
+		System.out.println("go 컨트롤러 수정");
+		System.out.println("go 컨트롤러 수정");
+		System.out.println("go 컨트롤러 수정");
+		System.out.println("go 컨트롤러 수정");
+		System.out.println("go 컨트롤러 수정");
+		System.out.println("go 컨트롤러 수정");
+		System.out.println("go 컨트롤러 수정");
+		System.out.println("go 컨트롤러 수정");
+
 		String fname = request.getParameter("fname");
 		System.out.println("fname: " + fname);
 		
 		OutputStream os = response.getOutputStream();
 		
 		File file = new File("C:\\zzz\\upload\\" + fname);
-
-		// toPath() : Returns a java.nio.file.Path object constructed from the this abstract path.
-		Path path = new File(fname).toPath();
 		
 		System.out.println("path: " + path);
 
