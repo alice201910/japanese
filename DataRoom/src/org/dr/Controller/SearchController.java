@@ -37,30 +37,12 @@ public class SearchController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.info("get����.........................");
+		log.info("get����.........................");
 
 		String type = request.getParameter("type");
 		String keyword = request.getParameter("keyword");
 
 		PagingDTO dto = new PagingDTO(request.getParameter("page"), request.getParameter("amount"));
-
-		SearchVO vo = new SearchVO();
-
-		vo.setType(type);
-		vo.setKeyword(keyword);
-		vo.setPaging(dto);
-
-		log.info(vo);
-
-		// --------------------------- ����� �κ�-----------------------------
-		int searchCnt = dao.getSearchCount(vo);
-		log.info("[Search Count] "+ dao.getSearchCount(vo));
-		request.setAttribute("pm", new PageMaker(searchCnt, dto));
-		request.setAttribute("list", dao.search(vo));
-		request.setAttribute("keyword", keyword);
-		request.setAttribute("type", type);
-		request.setAttribute("searchCnt", searchCnt);
-		// ---------------------------------------------------------------------
 
 		request.getRequestDispatcher("../WEB-INF/views/board/search.jsp").forward(request, response);
 		
@@ -73,5 +55,31 @@ public class SearchController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
+	public void test() {
+		System.out.println("기억이 나지 않습니다................................");
+		System.out.println("기억이 나지 않습니다................................");
+		System.out.println("기억이 나지 않습니다................................");
+		System.out.println("기억이 나지 않습니다................................");
+		System.out.println("기억이 나지 않습니다................................");
+		System.out.println("기억이 나지 않습니다................................");
+		System.out.println("기억이 나지 않습니다................................");
+		
+
+		// 헤헤
+		for(int i=0; i<10; i++ ) {
+			for(int j=0; j<10; j++) {
+				
+				System.out.println("~~~~~~~~~~~~~~~헤헤~~~~~~~~~~~~~~~");
+				System.out.println("~~~~~~~~~~~~~~~헤헤~~~~~~~~~~~~~~~");
+				System.out.println("~~~~~~~~~~~~~~~헤헤~~~~~~~~~~~~~~~");
+				System.out.println("~~~~~~~~~~~~~~~헤헤~~~~~~~~~~~~~~~");
+				
+			}
+			System.out.println();
+		}
+		
+	}
+	
 
 }
